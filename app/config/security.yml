@@ -1,11 +1,25 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
 security:
+    encoders:
+        Symfony\Component\Security\Core\User\User:
+            algorithm: bcrypt
+            cost: 12
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
         in_memory:
-            memory: ~
+            memory:
+                users:
+                    user:
+                        # password: user
+                        # php bin/console security:encode-password
+                        password: $2y$12$csVX1Vwy6/D9gefp8bPnsucQ7lG6ahD6OtUDIqVRerAl270JlKI2m
+                        roles: 'ROLE_USER'
+                    admin:
+                        # password: admin
+                        password: $2y$12$PiI8dXFRfg5vCzq0UcYzc.GDTh5qIGBE1Cp3JHWa7TyaShRAQldji
+                        roles: 'ROLE_ADMIN'
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -20,5 +34,12 @@ security:
             # http_basic: ~
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
-            # form_login: ~
+            form_login:
+                login_path: login
+                check_path: login
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
+
+
+
+
+

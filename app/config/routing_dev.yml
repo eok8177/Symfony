@@ -13,7 +13,3 @@ _errors:
 _main:
     resource: routing.yml
 
-hello:
-    path:      /hello/{name}
-    # uses a special syntax to point to the controller - see note below
-    defaults:  { _controller: AppBundle:Hello:index }
