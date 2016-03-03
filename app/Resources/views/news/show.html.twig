@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>News</h1>
+        <hr>
+
+        <h2>{{ post.getName }}</h2>
+        <p>
+          {{ post.getDescription }}
+        </p>
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}

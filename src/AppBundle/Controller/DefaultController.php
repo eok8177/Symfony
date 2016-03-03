@@ -54,7 +54,28 @@ class DefaultController extends Controller
             );
         }
 
-        // ... do something, like pass the $news object into a template
-        return new Response('View news description '.$news->getDescription());
+        return $this->render('news/show.html.twig', [
+            'post' => $news,
+        ]);
+    }
+
+    /**
+     * @Route("/news", name="news")
+     */
+    public function newsAction()
+    {
+        $news = $this->getDoctrine()
+            ->getRepository('AppBundle:News')
+            ->findAll();
+
+        if (!$news) {
+            throw $this->createNotFoundException(
+                'No news found '
+            );
+        }
+
+        return $this->render('news/index.html.twig', [
+            'news' => $news,
+        ]);
     }
 }
