@@ -1,0 +1,27 @@
+{% extends 'backend/base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+
+        <h1>News</h1>
+        <hr>
+        <ul>
+        {% for key, post in news %}
+            <li>
+                <a href="edit/{{ post.getId }}">{{ post.getName }}</a>
+                <p>
+                  {{ post.getDescription }}
+                </p>
+            </li>
+        {% endfor %}
+        </ul>
+
+
+    </div>
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+
+</style>
+{% endblock %}
