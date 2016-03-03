@@ -30,16 +30,23 @@ security:
         main:
             anonymous: ~
             # activate different ways to authenticate
-
+        # secured_area:
+        #     logout:
+        #         path:   /logout
+        #         target: /
             # http_basic: ~
             # http://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
 
             form_login:
                 login_path: login
                 check_path: login
+            logout: true
             # http://symfony.com/doc/current/cookbook/security/form_login_setup.html
 
 
 
-
+    access_control:
+        # require ROLE_ADMIN for /admin*
+        - { path: ^/admin, roles: ROLE_ADMIN }
+    # http://symfony.com/doc/current/book/security.html#securing-url-patterns-access-control
 
