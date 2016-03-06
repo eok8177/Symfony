@@ -181,13 +181,13 @@
 
 
                     <li>
-                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#dropdown-2" ><i class="fa fa-fw fa-arrows-v"></i> News</a>
+                        <a href="#" class="dropdown-toggle" data-toggle="collapse" data-target="#dropdown-2" ><i class="fa fa-fw fa-th"></i> News</a>
                         <ul id="dropdown-2" class="collapse in"> <!-- in = opened block -->
-                            <li class="{{ (app.request.attributes.get('_route') == 'backend.news') ? 'active' : ''}}">
-                                <a href="{{ path('backend.news') }}"><i class="fa fa-fw fa-file"></i> List news</a>
+                            <li class="{{ (app.request.attributes.get('_route') == 'backend_news_list') ? 'active' : ''}}">
+                                <a href="{{ path('backend_news_list') }}"><i class="fa fa-fw fa-list"></i> List news</a>
                             </li>
-                            <li class="">
-                                <a href="#"><i class="fa fa-fw fa-ambulance"></i> Create News</a>
+                            <li class="{{ (app.request.attributes.get('_route') == 'backend_news_create') ? 'active' : ''}}">
+                                <a href="{{ path('backend_news_create') }}"><i class="fa fa-fw fa-plus"></i> Create News</a>
                             </li>
                         </ul>
                     </li>
@@ -209,7 +209,9 @@
                     <div class="col-lg-12">
                         {% block body %}{% endblock %}
                         {% block javascripts %}{% endblock %}
-{{ app.request.attributes.get('_route') }}
+
+
+                    <small>Route: {{ app.request.attributes.get('_route') }}</small>
                     </div>
                 </div><!-- /.row -->
 
